@@ -23,7 +23,10 @@ if (isset($_GET['latitude']) && isset($_GET['longitude'])) {
     <meta name="apple-touch-fullscreen" content="yes">
     <link rel="apple-touch-icon" href="icon.png">
     
-    <style>th { text-align: left; }</style>
+    <style>
+    body { font-family: sans=-serif; }
+    th { text-align: left; }
+    </style>
   </head>
 	
   <body>
