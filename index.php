@@ -63,11 +63,11 @@
 
     <script>
     // geolocation API code from http://owlsnearyou.com/
-    if (typeof(navigator.geolocation) != 'undefined' && !location.search) {
+    if (typeof(navigator.geolocation) != "undefined" && !location.search) {
   		navigator.geolocation.watchPosition(
   		  function (position) {
-      	  document.getElementById('latitude') = position.coords.latitude;
-      	  document.getElementById('longitude') = position.coords.longitude;
+      	  document.getElementById('latitude').setAttribute("value", position.coords.latitude);
+      	  document.getElementById('longitude').setAttribute("value", position.coords.longitude);
       	}, 
       	function (error) {
       	  var messages = ["", " (permission denied)", " (unavailabe)", " (timeout)"];
