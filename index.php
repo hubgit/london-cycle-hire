@@ -1,13 +1,24 @@
 <? require '/opt/libapi/main.php'; ?>
 <? require __DIR__ . '/update.php'; ?>
-<? require __DIR__ . '/query.php'; ?>
+<? if (isset($_GET['latitude']) && isset($_GET['longitude'])) require __DIR__ . '/query.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>London Cycle Hire Stations</title>
-	  
-    <!--<link rel="stylesheet" href="style.css">-->
+    <title>London Cycle Hire Stations</title> 
+    <link id="shorturl" rev="canonical" type="text/html" href="http://bit.ly/av0hn0">
+    
+    <meta name="application-name" content="CycleWire"> 
+    <meta name="application-url" content="http://alf.hubmed.org/2010/07/london-cycle-hire/">  
+    <link rel="icon" href="icon.png" sizes="60x60">
+    <meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link rel="apple-touch-icon" href="icon.png">
+
   </head>
 	
   <body>
@@ -19,11 +30,13 @@
         <option value="html">HTML</option>
         <option value="json">JSON</option>
       </select></label><br>
-      <input type="submit" value="Find nearby docking stations">
+      <input type="submit" value="Find docking stations near this location">
     </form>
 
 <? if (empty($items)): ?>
+<? if (isset($items)): ?>
   <p class="error">No data is available at the moment.</p>
+<? endif; ?>
 <? else: ?>
 <p>Data fetched at <?= date('g:ia \o\n F jS Y', $updated); ?></p>
   

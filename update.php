@@ -8,9 +8,6 @@ if (file_exists($file)){
     return TRUE;
 }
 
-$updated = time();
-touch($file);
-
 $mongo = new Mongo('localhost:27017', array('persist' => TRUE));
 $collection = $mongo->{'london-cycle-hire'}->{'stations-tmp'};
 //$collection->drop();
@@ -52,3 +49,6 @@ $mongo->admin->command(array(
 ));
 
 $collection->drop();
+
+$updated = time();
+touch($file);
