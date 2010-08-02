@@ -70,12 +70,12 @@ if (isset($_GET['latitude']) && isset($_GET['longitude'])) {
     if (typeof(navigator.geolocation) != "undefined" && !location.search) {
   		navigator.geolocation.watchPosition(
   		  function (position) {
-      	  document.getElementById('latitude').setAttribute("value", position.coords.latitude);
-      	  document.getElementById('longitude').setAttribute("value", position.coords.longitude);
+      	  document.getElementById("latitude").setAttribute("value", position.coords.latitude);
+      	  document.getElementById("longitude").setAttribute("value", position.coords.longitude);
       	}, 
       	function (error) {
-      	  var messages = ["", " (permission denied)", " (unavailabe)", " (timeout)"];
-      		alert("Can't get location" + messages[error.code]);
+      	  var messages = ["", " (permission denied)", " (unavailable)", " (timeout)"];
+      		//alert("Can't get location" + messages[error.code]);
       	}, 
       	{ enableHighAccuracy: true,	maximumAge: 600000 }
   		);
