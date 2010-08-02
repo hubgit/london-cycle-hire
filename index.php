@@ -1,6 +1,10 @@
 <? require '/opt/libapi/main.php'; ?>
-<? require __DIR__ . '/update.php'; ?>
-<? if (isset($_GET['latitude']) && isset($_GET['longitude'])) require __DIR__ . '/query.php'; ?>
+<? 
+if (isset($_GET['latitude']) && isset($_GET['longitude'])) {
+  require __DIR__ . '/update.php';
+  require __DIR__ . '/query.php'; 
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
