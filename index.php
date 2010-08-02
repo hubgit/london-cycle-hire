@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <title>London Cycle Hire Stations</title> 
-    <link id="shorturl" rev="canonical" type="text/html" href="http://bit.ly/av0hn0">
+    <link id="shorturl" rev="canonical" type="text/html" href="http://bit.ly/bikesplz">
     
     <meta name="application-name" content="CycleWire"> 
     <meta name="application-url" content="http://alf.hubmed.org/2010/07/london-cycle-hire/">  
