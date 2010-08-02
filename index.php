@@ -24,7 +24,7 @@ if (isset($_GET['latitude']) && isset($_GET['longitude'])) {
     <link rel="apple-touch-icon" href="icon.png">
     
     <style>
-    body { font-family: sans=-serif; }
+    body { font-family: sans-serif; }
     th { text-align: left; }
     </style>
   </head>
