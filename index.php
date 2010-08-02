@@ -67,7 +67,7 @@ if (isset($_GET['latitude']) && isset($_GET['longitude'])) {
 
     <script>
     // geolocation API code from http://owlsnearyou.com/
-    if (typeof(navigator.geolocation) != "undefined" && !location.search) {
+    if (typeof(navigator.geolocation) != "undefined") {
   		navigator.geolocation.watchPosition(
   		  function (position) {
       	  document.getElementById("latitude").setAttribute("value", position.coords.latitude);
