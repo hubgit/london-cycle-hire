@@ -18,7 +18,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-touch-fullscreen" content="yes">
     <link rel="apple-touch-icon" href="icon.png">
-
+    
+    <style>th { text-align: left; }</style>
   </head>
 	
   <body>
@@ -34,7 +35,7 @@
     </form>
 
 <? if (empty($items)): ?>
-<? if (isset($items)): ?>
+<? if (isset($_GET['latitude']) && isset($_GET['longitude'])): ?>
   <p class="error">No data is available at the moment.</p>
 <? endif; ?>
 <? else: ?>
@@ -51,7 +52,7 @@
   <tbody>
 <? foreach ($items as $item): ?>
     <tr>
-      <td><? h($item['name']); ?></td>
+      <td><a href="http://maps.google.com/maps?z=18&amp;q=loc:<? h($item['location']['latitude']); ?>+<? h($item['location']['longitude']); ?>"><? h($item['name']); ?></a></td>
       <td><? h($item['nbBikes']); ?></td>
       <td><? h($item['nbEmptyDocks']); ?></td>
     </tr>
