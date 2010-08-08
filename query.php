@@ -17,7 +17,8 @@ if ($_GET['_format'] == 'json'){
 }
 
 function fix_values(&$item){
-  $item['obj']['distance'] = ceil($item['dis'] * 111111);
+  $factor = (111248.24 + 70197.65) / 2; // 111111 at the equator; this value is the average for a degree of latitude or longitude at latitude 51'
+  $item['obj']['distance'] = ceil($item['dis'] * $factor );
   $item = $item['obj'];
 }
 
