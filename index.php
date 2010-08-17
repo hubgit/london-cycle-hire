@@ -1,6 +1,7 @@
-<? require '/opt/libapi/main.php'; ?>
-<? Config::set('DEBUG', 'FIRE'); ?>
 <?
+require '/opt/libapi/main.php';
+Config::set('DEBUG', 'OFF');
+
 if (isset($_GET['latitude']) && isset($_GET['longitude'])) {
   require __DIR__ . '/update.php';
   require __DIR__ . '/query.php';
@@ -54,9 +55,9 @@ if (isset($_GET['latitude']) && isset($_GET['longitude'])) {
   <thead>
     <tr>
       <th></th>
-      <th>Dist</th>
       <th>In</th>
       <th>Out</th>
+      <th>km</th>
       <th>Name</th>
     </tr>
   </thead>
@@ -64,9 +65,9 @@ if (isset($_GET['latitude']) && isset($_GET['longitude'])) {
 <? foreach ($items as $item): ?>
     <tr>
       <td><div style="width:50px; height: 1em; background:red;"><div style="width:<? h(ceil(($item['nbBikes']/($item['nbBikes'] + $item['nbEmptyDocks'])) * 50)); ?>px; height:1em; background:green;"></div></div></td>
-      <td><? h($item['distance']); ?></td>
       <td><? h($item['nbBikes']); ?></td>
       <td><? h($item['nbEmptyDocks']); ?></td>
+      <td><? h(sprintf('%0.2f', $item['distance'] / 1000)); ?></td>
       <td><a href="<? h(url('http://maps.google.com/maps', array('z' => 18, 'q' => $item['name'] . '@' . $item['location']['latitude'] . ',' . $item['location']['longitude']))); ?>"><? h($item['name']); ?></a></td>
     </tr>
 <? endforeach; ?>
@@ -77,17 +78,19 @@ if (isset($_GET['latitude']) && isset($_GET['longitude'])) {
     <script>
     if (typeof(navigator.geolocation) != "undefined") {
       navigator.geolocation.watchPosition(
-
-      function (position) {
-        document.getElementById("latitude").setAttribute("value", position.coords.latitude);
-        document.getElementById("longitude").setAttribute("value", position.coords.longitude);
-      }, function (error) {
-        var messages = ["", " (permission denied)", " (unavailable)", " (timeout)"];
-        //alert("Can't get location" + messages[error.code]);
-      }, {
-        enableHighAccuracy: true,
-        maximumAge: 600000
-      });
+        function (position) {
+          document.getElementById("latitude").setAttribute("value", position.coords.latitude);
+          document.getElementById("longitude").setAttribute("value", position.coords.longitude);
+        },
+        function (error) {
+          var messages = ["", " (permission denied)", " (unavailable)", " (timeout)"];
+          //alert("Can't get location" + messages[error.code]);
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 600000
+        }
+      );
     }
     </script>
   </body>
